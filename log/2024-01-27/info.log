@@ -1,3 +1,6 @@
 [SG_BLOG_GIN_ADMIN]2024/01/27 - 10:53:19.745	[34minfo[0m	D:/code/go_code/sgblog-go/common/initialize/gorm.go:29	register table success
 [SG_BLOG_GIN_ADMIN]2024/01/27 - 10:53:23.108	[34minfo[0m	D:/code/go_code/sgblog-go/common/initialize/router.go:13	router register success
 [SG_BLOG_GIN_ADMIN]2024/01/27 - 10:53:23.122	[34minfo[0m	D:/code/go_code/sgblog-go/common/core/server.go:35	server run success on 	{"address": ":8888"}
+[SG_BLOG_GIN_ADMIN]2024/01/27 - 18:37:33.094	[34minfo[0m	D:/code/go_code/sgblog-go/app/admin/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_ADMIN]2024/01/27 - 18:37:33.095	[34minfo[0m	D:/code/go_code/sgblog-go/app/admin/cmd/initialize/router.go:13	router register success
+[SG_BLOG_GIN_ADMIN]2024/01/27 - 18:37:33.100	[34minfo[0m	D:/code/go_code/sgblog-go/app/admin/cmd/core/server.go:34	server run success on 	{"address": ":8989"}

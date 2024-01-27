@@ -1,0 +1,27 @@
+[SG_BLOG_GIN_BLOG]2024/01/27 - 18:41:06.912	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 18:41:06.914	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:13	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 18:41:06.923	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7777"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 18:41:24.864	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 18:41:24.866	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:13	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 18:41:24.881	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7777"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:09:13.076	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:09:13.078	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:32	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:09:13.082	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7778"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:10:07.855	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:10:07.856	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:32	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:10:07.863	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7778"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:11:01.649	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:11:01.651	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:33	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:11:01.659	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7778"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:55:15.877	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:55:15.880	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:33	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:55:15.896	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7778"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:56:49.184	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:56:49.185	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:33	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:56:49.192	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7778"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:57:57.312	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:57:57.314	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:33	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:57:57.321	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7778"}
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:59:29.969	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/gorm.go:41	register table success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:59:29.971	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/initialize/router.go:33	router register success
+[SG_BLOG_GIN_BLOG]2024/01/27 - 20:59:29.973	[34minfo[0m	D:/code/go_code/sgblog-go/app/blog/cmd/core/server.go:34	server run success on 	{"address": ":7778"}
