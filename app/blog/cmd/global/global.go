@@ -16,7 +16,7 @@ var (
 	SG_BLOG_VP     *viper.Viper
 	SG_BLOG_LOG    *zap.Logger
 	lock           sync.RWMutex
-	GVA_REDIS      *redis.Client
+	SG_BLOG_REDIS  *redis.Client
 )
 
 // GetGlobalDBByDBName 通过名称获取db list中的db

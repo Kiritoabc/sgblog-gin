@@ -19,6 +19,6 @@ func Redis() {
 		global.SG_BLOG_LOG.Error("redis connect ping failed, err:", zap.Error(err))
 	} else {
 		global.SG_BLOG_LOG.Info("redis connect ping response:", zap.String("pong", pong))
-		global.GVA_REDIS = client
+		global.SG_BLOG_REDIS = client
 	}
 }

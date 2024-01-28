@@ -12,5 +12,7 @@ func (s ArticleRouter) InitArticleRouter(Router *gin.RouterGroup) {
 	articleApi := v1.ApiGroupApp.BlogApiGroup.BlogArticleApi
 	{
 		articleRouter.GET("/hotArticleList", articleApi.HotArticleList)
+		articleRouter.GET("/articleList", articleApi.ArticleList)
+		articleRouter.GET("/:id", articleApi.GetArticleDetail)
 	}
 }
