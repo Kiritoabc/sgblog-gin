@@ -10,7 +10,12 @@ zap:
   stacktrace-key: stacktrace
   log-in-console: true
 
-
+# jwt configuration
+jwt:
+  signing-key: kirito
+  expires-time: 7d
+  buffer-time: 1d
+  issuer: kirito
 
 # redis configuration
 redis:

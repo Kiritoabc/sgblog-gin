@@ -14,5 +14,6 @@ func (s ArticleRouter) InitArticleRouter(Router *gin.RouterGroup) {
 		articleRouter.GET("/hotArticleList", articleApi.HotArticleList)
 		articleRouter.GET("/articleList", articleApi.ArticleList)
 		articleRouter.GET("/:id", articleApi.GetArticleDetail)
+		articleRouter.PUT("/updateViewCount/:id", articleApi.UpdateViewCount)
 	}
 }

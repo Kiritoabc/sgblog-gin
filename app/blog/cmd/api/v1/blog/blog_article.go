@@ -51,3 +51,14 @@ func (s BlogArticleApi) GetArticleDetail(ctx *gin.Context) {
 	}
 	response.OkWithData(detail, ctx)
 }
+
+func (s BlogArticleApi) UpdateViewCount(ctx *gin.Context) {
+	id := ctx.Param("id")
+	idParam, _ := strconv.ParseInt(id, 10, 64)
+	err := blogArticleService.UpdateViewCount(idParam)
+	if err != nil {
+		response.FailWithMessage(err.Error(), ctx)
+		return
+	}
+	response.OkWithMessage("操作成功", ctx)
+}
