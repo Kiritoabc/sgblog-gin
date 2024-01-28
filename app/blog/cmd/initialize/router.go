@@ -22,6 +22,7 @@ func Routers() *gin.Engine {
 			c.JSON(http.StatusOK, "ok")
 		})
 		blogRouter.InitCategoryRouter(PublicGroup)
+		blogRouter.InitArticleRouter(PublicGroup)
 	}
 	PrivateGroup := Router.Group(global.SG_BLOG_COFIG.System.RouterPrefix)
 	{

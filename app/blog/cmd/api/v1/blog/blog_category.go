@@ -9,6 +9,10 @@ type BlogCategoryApi struct{}
 
 func (s *BlogCategoryApi) GetCategoryList(ctx *gin.Context) {
 
-	categoryVo, _ := blogCategoryService.GetCategoryList()
+	categoryVo, err := blogCategoryService.GetCategoryList()
+	if err != nil {
+		response.FailWithMessage(err.Error(), ctx)
+		return
+	}
 	response.OkWithData(categoryVo.List, ctx)
 }

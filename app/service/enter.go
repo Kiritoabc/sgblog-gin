@@ -1,6 +1,8 @@
 package service
 
-import "sgblog-go/app/blog/cmd/service/blog"
+import (
+	"sgblog-go/app/service/blog"
+)
 
 type ServiceGroup struct {
 	BlogServiceGroup blog.ServiceGroup
