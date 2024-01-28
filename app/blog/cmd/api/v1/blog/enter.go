@@ -7,9 +7,11 @@ import (
 type ApiGroup struct {
 	BlogCategoryApi
 	BlogArticleApi
+	BlogLoginApi
 }
 
 var (
 	blogCategoryService = service.ServiceGroupApp.BlogServiceGroup.CategoryService
 	blogArticleService  = service.ServiceGroupApp.BlogServiceGroup.ArticleService
+	blogLoginService    = service.ServiceGroupApp.BlogServiceGroup.LoginService
 )

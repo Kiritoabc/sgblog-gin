@@ -19,7 +19,7 @@ jwt:
 
 # redis configuration
 redis:
-  db: 0
+  db: 1
   addr: 127.0.0.1:6379
   password: ""
 

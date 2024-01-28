@@ -23,6 +23,7 @@ func Routers() *gin.Engine {
 		})
 		blogRouter.InitCategoryRouter(PublicGroup)
 		blogRouter.InitArticleRouter(PublicGroup)
+		blogRouter.InitLoginRouter(PublicGroup)
 	}
 	PrivateGroup := Router.Group(global.SG_BLOG_COFIG.System.RouterPrefix)
 	{
