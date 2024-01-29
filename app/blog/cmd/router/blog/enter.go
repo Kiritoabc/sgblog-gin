@@ -4,4 +4,5 @@ type RouterGroup struct {
 	CategoryRouter
 	ArticleRouter
 	LoginRouter
+	UserRouter
 }

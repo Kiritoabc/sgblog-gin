@@ -42,13 +42,12 @@ func (s *LoginService) Login(user blog.SysUser) (*vo.BlogUserLoginVo, error) {
 		return nil, err
 	}
 
-	//把用户信息存入redis？？？？为什么存入不成功？？
+	//把用户信息存入redis
 	var ctx = context.Background()
 	key := fmt.Sprintf("bloglogin:%d", loginUser.User.Id)
 	jsonUser1, err := json.Marshal(&loginUser)
 	redis := global.SG_BLOG_REDIS
 	err = redis.Set(ctx, key, jsonUser1, 24*time.Hour).Err()
-	redis.Set(ctx, "hello:1", "hello world", 10*time.Minute)
 	if err != nil {
 		return nil, err
 	}
@@ -58,6 +57,7 @@ func (s *LoginService) Login(user blog.SysUser) (*vo.BlogUserLoginVo, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return &vo.BlogUserLoginVo{
 		Token:    token,
 		UserInfo: userInfo,
@@ -104,8 +104,3 @@ func LoadUserByUserName(name string) (*blog.UserLogin, error) {
 		Permissions: nil,
 	}, nil
 }
-
-// SELECT * FROM `sys_user` LEFT JOIN sys_role_menu ON sys_user_role.role_id = sys_role_menu.role_id LEFT
-// JOIN sys_menu ON sys_menu.id = sys_role_menu.menu_id WHERE user_name = 'sg'  AND  `sys_user_role`.user_id = 1 AND ( `sys
-//_menu.menu_type` IN ('C','F') AND `sys_menu.status` = 0 AND `sys_menu`.del_flag = 0) ORDER BY `sys_user`.`role_id` LIMIT
-//1
