@@ -4,6 +4,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	v1 "sgblog-go/app/blog/cmd/api/v1"
 	"sgblog-go/app/blog/cmd/global"
 	"sgblog-go/app/blog/cmd/router"
 )
@@ -15,6 +16,9 @@ func Routers() *gin.Engine {
 	// TODO:暂时不做跨域处理，后续需要再做处理
 	Router.Use(cors.Default())
 	blogRouter := router.RouterGroupApp.Blog
+	// 注册路由
+	Router.POST("/user/register", v1.ApiGroupApp.BlogApiGroup.Register)
+
 	PublicGroup := Router.Group(global.SG_BLOG_COFIG.System.RouterPrefix)
 	{
 		// 健康监测

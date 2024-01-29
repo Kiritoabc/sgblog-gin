@@ -15,9 +15,9 @@ type SgArticle struct {
 	ViewCount  int64                 `gorm:"column:view_count;type:BIGINT(200);" json:"viewCount"`
 	IsComment  string                `gorm:"column:is_comment;type:CHAR(1);" json:"isComment"`
 	CreateBy   int64                 `gorm:"column:create_by;type:BIGINT(20);" json:"createBy"`
-	CreateTime time.Time             `gorm:"column:create_time;type:DATETIME;" json:"createTime"`
+	CreateTime time.Time             `gorm:"column:create_time;type:DATETIME;default:current_timestamp" json:"createTime"`
 	UpdateBy   int64                 `gorm:"column:update_by;type:BIGINT(20);" json:"updateBy"`
-	UpdateTime time.Time             `gorm:"column:update_time;type:DATETIME;" json:"updateTime"`
+	UpdateTime time.Time             `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	DelFlag    soft_delete.DeletedAt `gorm:"column:del_flag;type:INT(1);softDelete:flag" json:"delFlag"` // 0：表示未删除的， 1：表示已经删除
 }
 

@@ -10,9 +10,9 @@ type SgLink struct {
 	Address     string    `gorm:"column:address;type:VARCHAR(128);" json:"address"`
 	Status      string    `gorm:"column:status;type:CHAR(1);" json:"status"`
 	CreateBy    int64     `gorm:"column:create_by;type:BIGINT(20);" json:"createBy"`
-	CreateTime  time.Time `gorm:"column:create_time;type:DATETIME;" json:"createTime"`
+	CreateTime  time.Time `gorm:"column:create_time;type:DATETIME;default:current_timestamp" json:"createTime"`
 	UpdateBy    int64     `gorm:"column:update_by;type:BIGINT(20);" json:"updateBy"`
-	UpdateTime  time.Time `gorm:"column:update_time;type:DATETIME;" json:"updateTime"`
+	UpdateTime  time.Time `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	DelFlag     int32     `gorm:"column:del_flag;type:INT(1);" json:"delFlag"`
 }
 

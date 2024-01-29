@@ -14,9 +14,9 @@ type SysUser struct {
 	Sex         string    `gorm:"column:sex;type:CHAR(1);" json:"sex"`
 	Avatar      string    `gorm:"column:avatar;type:VARCHAR(128);" json:"avatar"`
 	CreateBy    int64     `gorm:"column:create_by;type:BIGINT(20);" json:"createBy"`
-	CreateTime  time.Time `gorm:"column:create_time;type:DATETIME;" json:"createTime"`
+	CreateTime  time.Time `gorm:"column:create_time;type:DATETIME;default:current_timestamp" json:"createTime"`
 	UpdateBy    int64     `gorm:"column:update_by;type:BIGINT(20);" json:"updateBy"`
-	UpdateTime  time.Time `gorm:"column:update_time;type:DATETIME;" json:"updateTime"`
+	UpdateTime  time.Time `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	DelFlag     int32     `gorm:"column:del_flag;type:INT(11);" json:"delFlag"`
 }
 

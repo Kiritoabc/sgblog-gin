@@ -9,9 +9,12 @@ import (
 type UserRouter struct{}
 
 func (s *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
-	userRouter := Router.Group("user").Use(middleware.JwtAuth())
 	userApi := v1.ApiGroupApp.BlogApiGroup.BlogUserApi
+
+	privateRouter := Router.Group("/user")
+	privateRouter.Use(middleware.JwtAuth())
 	{
-		userRouter.GET("/userInfo", userApi.UserInfo)
+		privateRouter.GET("/user/userInfo", userApi.UserInfo)
+		privateRouter.PUT("/user/userInfo", userApi.UpdateUserInfo)
 	}
 }

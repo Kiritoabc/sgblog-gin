@@ -9,9 +9,9 @@ type SgCategory struct {
 	Description string    `gorm:"column:description;type:VARCHAR(512);" json:"description"`
 	Status      string    `gorm:"column:status;type:CHAR(1);" json:"status"`
 	CreateBy    int64     `gorm:"column:create_by;type:BIGINT(200);" json:"createBy"`
-	CreateTime  time.Time `gorm:"column:create_time;type:DATETIME;" json:"createTime"`
+	CreateTime  time.Time `gorm:"column:create_time;type:DATETIME;default:current_timestamp" json:"createTime"`
 	UpdateBy    int64     `gorm:"column:update_by;type:BIGINT(200);" json:"updateBy"`
-	UpdateTime  time.Time `gorm:"column:update_time;type:DATETIME;" json:"updateTime"`
+	UpdateTime  time.Time `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	DelFlag     int32     `gorm:"column:del_flag;type:INT(11);" json:"delFlag"`
 }
 

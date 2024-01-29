@@ -16,9 +16,9 @@ type SysMenu struct {
 	Perms      string    `gorm:"column:perms;type:VARCHAR(100);" json:"perms"`
 	Icon       string    `gorm:"column:icon;type:VARCHAR(100);" json:"icon"`
 	CreateBy   int64     `gorm:"column:create_by;type:BIGINT(20);" json:"createBy"`
-	CreateTime time.Time `gorm:"column:create_time;type:DATETIME;" json:"createTime"`
+	CreateTime time.Time `gorm:"column:create_time;type:DATETIME;default:current_timestamp" json:"createTime"`
 	UpdateBy   int64     `gorm:"column:update_by;type:BIGINT(20);" json:"updateBy"`
-	UpdateTime time.Time `gorm:"column:update_time;type:DATETIME;" json:"updateTime"`
+	UpdateTime time.Time `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	Remark     string    `gorm:"column:remark;type:VARCHAR(500);" json:"remark"`
 	DelFlag    string    `gorm:"column:del_flag;type:CHAR(1);" json:"delFlag"`
 }
