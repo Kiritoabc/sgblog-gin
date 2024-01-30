@@ -5,4 +5,5 @@ type RouterGroup struct {
 	ArticleRouter
 	LoginRouter
 	UserRouter
+	CommentRouter
 }

@@ -7,7 +7,7 @@ import (
 
 type ArticleRouter struct{}
 
-func (s ArticleRouter) InitArticleRouter(Router *gin.RouterGroup) {
+func (s *ArticleRouter) InitArticleRouter(Router *gin.RouterGroup) {
 	articleRouter := Router.Group("article")
 	articleApi := v1.ApiGroupApp.BlogApiGroup.BlogArticleApi
 	{

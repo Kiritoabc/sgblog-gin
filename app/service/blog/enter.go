@@ -5,4 +5,5 @@ type ServiceGroup struct {
 	ArticleService
 	LoginService
 	UserService
+	CommentService
 }

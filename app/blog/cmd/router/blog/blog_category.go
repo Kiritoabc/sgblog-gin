@@ -7,7 +7,7 @@ import (
 
 type CategoryRouter struct{}
 
-func (s CategoryRouter) InitCategoryRouter(Router *gin.RouterGroup) {
+func (s *CategoryRouter) InitCategoryRouter(Router *gin.RouterGroup) {
 	categoryRouter := Router.Group("category")
 	categoryApi := v1.ApiGroupApp.BlogApiGroup.BlogCategoryApi
 	{

@@ -13,7 +13,6 @@ import (
 
 func Routers() *gin.Engine {
 	Router := gin.Default()
-	// TODO:暂时不做跨域处理，后续需要再做处理
 	Router.Use(cors.Default())
 	blogRouter := router.RouterGroupApp.Blog
 	// 注册路由
@@ -27,8 +26,7 @@ func Routers() *gin.Engine {
 		})
 		blogRouter.InitCategoryRouter(PublicGroup)
 		blogRouter.InitArticleRouter(PublicGroup)
-		blogRouter.InitLoginRouter(PublicGroup)
-		blogRouter.InitUserRouter(PublicGroup)
+		blogRouter.InitCommentRouter(PublicGroup)
 	}
 	PrivateGroup := Router.Group(global.SG_BLOG_COFIG.System.RouterPrefix)
 	{
@@ -36,6 +34,8 @@ func Routers() *gin.Engine {
 			c.JSON(http.StatusOK, "hello world")
 		})
 		_ = blogRouter
+		blogRouter.InitUserRouter(PrivateGroup)
+		blogRouter.InitLoginRouter(PrivateGroup)
 	}
 	global.SG_BLOG_LOG.Info("router register success")
 	return Router
