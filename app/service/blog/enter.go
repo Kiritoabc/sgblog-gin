@@ -6,4 +6,5 @@ type ServiceGroup struct {
 	LoginService
 	UserService
 	CommentService
+	LinkService
 }

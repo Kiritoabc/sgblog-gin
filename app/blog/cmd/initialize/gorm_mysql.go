@@ -33,7 +33,9 @@ func GormMysql() *gorm.DB {
 			for _, field := range tx.Statement.Schema.Fields {
 				if field.DBName == "create_time" {
 					tx.Statement.SetColumn(field.DBName, time.Now())
-					break
+				}
+				if field.DBName == "update_time" {
+					tx.Statement.SetColumn(field.DBName, time.Now())
 				}
 			}
 		})

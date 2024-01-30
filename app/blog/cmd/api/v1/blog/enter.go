@@ -10,6 +10,7 @@ type ApiGroup struct {
 	BlogLoginApi
 	BlogUserApi
 	BlogCommentApi
+	BlogLinkApi
 }
 
 var (
@@ -18,4 +19,5 @@ var (
 	blogLoginService    = service.ServiceGroupApp.BlogServiceGroup.LoginService
 	blogUserService     = service.ServiceGroupApp.BlogServiceGroup.UserService
 	blogCommentService  = service.ServiceGroupApp.BlogServiceGroup.CommentService
+	blogLinkService     = service.ServiceGroupApp.BlogServiceGroup.LinkService
 )

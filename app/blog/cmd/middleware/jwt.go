@@ -50,6 +50,7 @@ func JwtAuth() gin.HandlerFunc {
 			return
 		}
 		c.Set("loginUser", loginResponse)
+		c.Set("userId", loginResponse.User.Id)
 		c.Next()
 	}
 }

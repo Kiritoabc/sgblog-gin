@@ -100,7 +100,7 @@ func (s *ArticleService) GetArticleDetail(id int64) (*vo.ArticleDetailVo, error)
 	return articleDetailVo, nil
 }
 
-func (s ArticleService) UpdateViewCount(id int64) error {
+func (s *ArticleService) UpdateViewCount(id int64) error {
 	redis := global.SG_BLOG_REDIS
 	_, err := redis.
 		HIncrBy(context.Background(), "article:viewCount", strconv.FormatInt(id, 10), 1).

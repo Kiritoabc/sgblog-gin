@@ -41,7 +41,7 @@ func (s *BlogArticleApi) ArticleList(ctx *gin.Context) {
 	}, ctx)
 }
 
-func (s BlogArticleApi) GetArticleDetail(ctx *gin.Context) {
+func (s *BlogArticleApi) GetArticleDetail(ctx *gin.Context) {
 	id := ctx.Param("id")
 	idParam, _ := strconv.ParseInt(id, 10, 64)
 	detail, err := blogArticleService.GetArticleDetail(idParam)
@@ -52,7 +52,7 @@ func (s BlogArticleApi) GetArticleDetail(ctx *gin.Context) {
 	response.OkWithData(detail, ctx)
 }
 
-func (s BlogArticleApi) UpdateViewCount(ctx *gin.Context) {
+func (s *BlogArticleApi) UpdateViewCount(ctx *gin.Context) {
 	id := ctx.Param("id")
 	idParam, _ := strconv.ParseInt(id, 10, 64)
 	err := blogArticleService.UpdateViewCount(idParam)

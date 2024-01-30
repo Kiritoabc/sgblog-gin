@@ -1,6 +1,7 @@
 package blog
 
 import (
+	"errors"
 	"github.com/jinzhu/copier"
 	"sgblog-go/app/blog/cmd/global"
 	"sgblog-go/app/model/blog"
@@ -24,7 +25,7 @@ func (s *CommentService) CommentList(commentType string,
 	// 4.评论类型
 	// 5. 分页查询
 	err := tx.Where("root_id = ? and type = ?", -1, commentType).
-		Order("create_time desc").
+		Order("create_time asc").
 		Limit(pageSize).
 		Offset((pageNum - 1) * pageSize).
 		Count(&total).
@@ -78,7 +79,7 @@ func (s *CommentService) toCommentVoList(comments []*blog.SgComment) ([]*vo.Comm
 	return commentVoList, nil
 }
 
-func (s CommentService) getChildren(id int64) (vos []*vo.CommentVO, err error) {
+func (s *CommentService) getChildren(id int64) (vos []*vo.CommentVO, err error) {
 	var comments []*blog.SgComment
 	if err = global.SG_BLOG_DB.Model(&blog.SgComment{}).
 		Where("root_id", id).
@@ -91,4 +92,15 @@ func (s CommentService) getChildren(id int64) (vos []*vo.CommentVO, err error) {
 		return
 	}
 	return
+}
+
+func (s *CommentService) AddComment(comment *blog.SgComment) error {
+	if comment.Content != "" {
+		return errors.New("评论内容不能为空")
+	}
+	err := global.SG_BLOG_DB.Save(comment).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }
