@@ -5,6 +5,7 @@ import (
 	"go.uber.org/zap"
 	"sgblog-go/app/blog/cmd/global"
 	"sgblog-go/app/blog/cmd/initialize"
+	"sgblog-go/app/blog/cmd/runner"
 	"time"
 )
 
@@ -16,6 +17,8 @@ func RunWindowsServer() {
 	if global.SG_BLOG_COFIG.System.UseMultipoint || global.SG_BLOG_COFIG.System.UseRedis {
 		// 初始化redis服务
 		initialize.Redis()
+		//  Runner
+		runner.ViewCountRunner()
 	}
 
 	// 从db加载jwt数据
@@ -36,5 +39,7 @@ func RunWindowsServer() {
 	fmt.Printf(`
 		默认自动化文档地址:http://127.0.0.1%s/swagger/index.html
 		默认前端文件运行地址:http://127.0.0.1%s`, address, address)
-	global.SG_BLOG_LOG.Error(s.ListenAndServe().Error())
+	_ = s
+	Router.Run(address)
+	//global.SG_BLOG_LOG.Error(s.ListenAndServe().Error())
 }

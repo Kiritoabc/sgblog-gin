@@ -42,7 +42,7 @@ func (s *BlogCommentApi) AddComment(ctx *gin.Context) {
 		response.FailWithMessage("用户未登录", ctx)
 		return
 	}
-	var addCommentDto dto.AddCommentDto
+	var addCommentDto = dto.AddCommentDto{}
 	err := ctx.ShouldBind(&addCommentDto)
 	if err != nil {
 		response.FailWithMessage(err.Error(), ctx)
@@ -54,7 +54,7 @@ func (s *BlogCommentApi) AddComment(ctx *gin.Context) {
 		response.FailWithMessage(err.Error(), ctx)
 		return
 	}
-
+	comment.Type = strconv.Itoa(addCommentDto.Type)
 	comment.CreateBy = userId.(int64)
 	comment.UpdateBy = userId.(int64)
 	err = blogCommentService.AddComment(&comment)

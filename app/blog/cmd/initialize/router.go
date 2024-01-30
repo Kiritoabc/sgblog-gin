@@ -1,19 +1,21 @@
 package initialize
 
 import (
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	v1 "sgblog-go/app/blog/cmd/api/v1"
 	"sgblog-go/app/blog/cmd/global"
+	"sgblog-go/app/blog/cmd/middleware"
 	"sgblog-go/app/blog/cmd/router"
 )
 
 // 初始化总路由
 
 func Routers() *gin.Engine {
-	Router := gin.Default()
-	Router.Use(cors.Default())
+	Router := gin.New()
+
+	Router.Use(middleware.Cors())
+
 	blogRouter := router.RouterGroupApp.Blog
 	// 注册路由
 	Router.POST("/user/register", v1.ApiGroupApp.BlogApiGroup.Register)

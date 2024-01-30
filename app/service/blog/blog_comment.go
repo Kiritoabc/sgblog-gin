@@ -95,7 +95,7 @@ func (s *CommentService) getChildren(id int64) (vos []*vo.CommentVO, err error) 
 }
 
 func (s *CommentService) AddComment(comment *blog.SgComment) error {
-	if comment.Content != "" {
+	if comment.Content == "" {
 		return errors.New("评论内容不能为空")
 	}
 	err := global.SG_BLOG_DB.Save(comment).Error

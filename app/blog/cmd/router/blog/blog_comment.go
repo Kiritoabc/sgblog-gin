@@ -21,6 +21,6 @@ func (s *CommentRouter) InitCommentPrivateRouter(Router *gin.RouterGroup) {
 	commentRouter := Router.Group("comment").Use(middleware.JwtAuth())
 	commentApi := v1.ApiGroupApp.BlogApiGroup.BlogCommentApi
 	{
-		commentRouter.POST("/", commentApi.AddComment) // 添加评论
+		commentRouter.POST("", commentApi.AddComment) // 添加评论
 	}
 }

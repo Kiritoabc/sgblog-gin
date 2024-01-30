@@ -4,7 +4,7 @@ type UserInfoVo struct {
 	// 主键
 	ID int64 `json:"id"`
 	// 昵称
-	NickName string `json:"nick_name"`
+	NickName string `json:"nickName"`
 	// 头像
 	Avatar string `json:"avatar"`
 	// 性别

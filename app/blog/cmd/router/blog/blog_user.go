@@ -14,7 +14,7 @@ func (s *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
 	privateRouter := Router.Group("/user")
 	privateRouter.Use(middleware.JwtAuth())
 	{
-		privateRouter.GET("/user/userInfo", userApi.UserInfo)
-		privateRouter.PUT("/user/userInfo", userApi.UpdateUserInfo)
+		privateRouter.GET("/userInfo", userApi.UserInfo)
+		privateRouter.PUT("/userInfo", userApi.UpdateUserInfo)
 	}
 }

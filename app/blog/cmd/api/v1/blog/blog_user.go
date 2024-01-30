@@ -1,6 +1,7 @@
 package blog
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"sgblog-go/app/model/blog"
 	"sgblog-go/app/model/common/response"
@@ -14,6 +15,8 @@ func (s BlogUserApi) UserInfo(ctx *gin.Context) {
 		response.FailWithMessage("用户未登录", ctx)
 		return
 	}
+	id := ctx.Param("userId")
+	fmt.Println(id)
 	userId := loginUser.(*blog.UserLogin).User.Id
 	userInfo, err := blogUserService.UserInfo(userId)
 	if err != nil {

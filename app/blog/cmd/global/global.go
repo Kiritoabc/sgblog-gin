@@ -7,6 +7,7 @@ import (
 	"golang.org/x/sync/singleflight"
 	"gorm.io/gorm"
 	"sgblog-go/common/config"
+	"sgblog-go/common/utils"
 	"sync"
 )
 
@@ -19,6 +20,7 @@ var (
 	lock                         sync.RWMutex
 	SG_BLOG_REDIS                *redis.Client
 	SG_BLOG__Concurrency_Control = &singleflight.Group{}
+	SG_BLOG_Timer                = utils.NewTimerTask()
 )
 
 // GetGlobalDBByDBName 通过名称获取db list中的db

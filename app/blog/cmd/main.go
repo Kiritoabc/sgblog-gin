@@ -14,6 +14,7 @@ func main() {
 	global.SG_BLOG_LOG = core.Zap()
 	zap.ReplaceGlobals(global.SG_BLOG_LOG)
 	global.SG_BLOG_DB = initialize.Gorm() // gorm连接数据库
+	initialize.Timer()
 	initialize.DBList()
 	if global.SG_BLOG_DB != nil {
 		initialize.RegisterTables() // 初始化表

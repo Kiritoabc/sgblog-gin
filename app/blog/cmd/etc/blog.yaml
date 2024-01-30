@@ -27,7 +27,7 @@ redis:
 # system configuration
 system:
   env: public # Change to "develop" to skip authentication for development mode
-  addr: 7778  # 测试7779，开发：7777
+  addr: 7777  # 测试7779，开发：7777
   db-type: mysql
   oss-type: local # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
   use-redis: true # 使用redis
@@ -55,3 +55,8 @@ mysql:
   log-zap: false
 
 
+# timer task db clear table
+Timer:
+  start: true
+  spec: "* * * * *" # 定时任务详细配置参考 https://pkg.go.dev/github.com/robfig/cron/v3
+  detail:

@@ -9,4 +9,5 @@ type Server struct {
 	Mysql  Mysql           `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	DBList []SpecializedDB `mapstructure:"db-list" json:"db-list" yaml:"db-list"`
 	Redis  Redis           `mapstructure:"redis" json:"redis" yaml:"redis"`
+	Timer  Timer           `mapstructure:"timer" json:"timer" yaml:"timer"`
 }
