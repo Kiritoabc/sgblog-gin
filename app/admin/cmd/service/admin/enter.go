@@ -8,4 +8,5 @@ type ServiceGroup struct {
 	CommentService
 	LinkService
 	MenuService
+	RoleService
 }

@@ -30,6 +30,7 @@ func Routers() *gin.Engine {
 		PrivateGroup.GET("/hello", func(c *gin.Context) {
 			c.JSON(http.StatusOK, "hello world")
 		})
+		adminRouter.InitLoginPrivateRouter(PrivateGroup)
 	}
 	global.SG_BLOG_LOG.Info("router register success")
 	return Router

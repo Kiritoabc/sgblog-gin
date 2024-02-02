@@ -10,10 +10,19 @@ type LoginRouter struct {
 }
 
 func (s LoginRouter) InitLoginROuter(Router *gin.RouterGroup) {
-	loginRouter := Router.Group("user")
+
 	loginApi := v1.ApiGroupApp.BlogApiGroup.AdminLoginApi
 	{
-		loginRouter.POST("/login", loginApi.Login)                             // 管理员登录
-		loginRouter.Use(middleware.JwtAuth()).POST("/logout", loginApi.Logout) // 管理员退出
+		Router.POST("/user/login", loginApi.Login) // 管理员登录
+
+	}
+}
+
+func (s LoginRouter) InitLoginPrivateRouter(Router *gin.RouterGroup) {
+	loginApi := v1.ApiGroupApp.BlogApiGroup.AdminLoginApi
+	Router.Use(middleware.JwtAuth())
+	{
+		Router.POST("/user/logout", loginApi.Logout) // 管理员退出
+		Router.GET("/getInfo", loginApi.GetInfo)     // 获取信息
 	}
 }

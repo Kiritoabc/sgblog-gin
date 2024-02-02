@@ -16,4 +16,5 @@ var (
 	blogCommentService  = service.ServiceGroupApp.BlogServiceGroup.CommentService
 	blogLinkService     = service.ServiceGroupApp.BlogServiceGroup.LinkService
 	menuService         = service.ServiceGroupApp.BlogServiceGroup.MenuService
+	roleService         = service.ServiceGroupApp.BlogServiceGroup.RoleService
 )

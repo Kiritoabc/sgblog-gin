@@ -43,3 +43,9 @@ func (s *MenuService) selectPermsByUserId(userId int64) ([]string, error) {
 	}
 	return permission, nil
 }
+
+//
+
+func (s *MenuService) selectRouterMenuTreeByUserId(userId int64) {
+
+}
