@@ -4,19 +4,21 @@ import (
 	"github.com/redis/go-redis/v9"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
+	"golang.org/x/sync/singleflight"
 	"gorm.io/gorm"
 	"sgblog-go/common/config"
 	"sync"
 )
 
 var (
-	SG_BLOG_DB     *gorm.DB
-	SG_BLOG_DBList map[string]*gorm.DB
-	SG_BLOG_COFIG  config.Server
-	SG_BLOG_VP     *viper.Viper
-	SG_BLOG_LOG    *zap.Logger
-	lock           sync.RWMutex
-	SG_BLOG_REDIS  *redis.Client
+	SG_BLOG_DB                   *gorm.DB
+	SG_BLOG_DBList               map[string]*gorm.DB
+	SG_BLOG_COFIG                config.Server
+	SG_BLOG_VP                   *viper.Viper
+	SG_BLOG_LOG                  *zap.Logger
+	lock                         sync.RWMutex
+	SG_BLOG__Concurrency_Control = &singleflight.Group{}
+	SG_BLOG_REDIS                *redis.Client
 )
 
 // GetGlobalDBByDBName 通过名称获取db list中的db

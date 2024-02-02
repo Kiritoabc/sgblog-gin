@@ -4,7 +4,7 @@ zap:
   level: info
   format: console
   prefix: "[SG_BLOG_GIN_BLOG]"
-  director: app/blog/cmd/log
+  director: app/admin/cmd/log
   show-line: true
   encode-level: LowercaseColorLevelEncoder
   stacktrace-key: stacktrace
@@ -52,7 +52,7 @@ mysql:
   max-idle-conns: 10
   max-open-conns: 100
   log-mode: ""
-  log-zap: false
+  log-zap: true
 
 
 # timer task db clear table

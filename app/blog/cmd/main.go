@@ -7,7 +7,7 @@ import (
 	"sgblog-go/app/blog/cmd/initialize"
 )
 
-var configFile = "app/blog/cmd/etc/blog.yaml"
+var configFile = "app/admin/cmd/etc/admin.yaml"
 
 func main() {
 	global.SG_BLOG_VP = core.Viper(configFile) // 初始化Viper

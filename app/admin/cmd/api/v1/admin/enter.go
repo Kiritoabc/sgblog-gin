@@ -1,16 +1,11 @@
-package blog
+package admin
 
 import (
-	"sgblog-go/app/blog/cmd/service"
+	"sgblog-go/app/admin/cmd/service"
 )
 
 type ApiGroup struct {
-	BlogCategoryApi
-	BlogArticleApi
-	BlogLoginApi
-	BlogUserApi
-	BlogCommentApi
-	BlogLinkApi
+	AdminLoginApi
 }
 
 var (
@@ -20,4 +15,5 @@ var (
 	blogUserService     = service.ServiceGroupApp.BlogServiceGroup.UserService
 	blogCommentService  = service.ServiceGroupApp.BlogServiceGroup.CommentService
 	blogLinkService     = service.ServiceGroupApp.BlogServiceGroup.LinkService
+	menuService         = service.ServiceGroupApp.BlogServiceGroup.MenuService
 )

@@ -1,11 +1,11 @@
 package service
 
 import (
-	"sgblog-go/app/service/blog"
+	"sgblog-go/app/admin/cmd/service/admin"
 )
 
 type ServiceGroup struct {
-	BlogServiceGroup blog.ServiceGroup
+	BlogServiceGroup admin.ServiceGroup
 }
 
 var ServiceGroupApp = new(ServiceGroup)

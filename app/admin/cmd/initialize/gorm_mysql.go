@@ -28,6 +28,26 @@ func GormMysql() *gorm.DB {
 		sqlDB, _ := db.DB()
 		sqlDB.SetMaxIdleConns(m.MaxIdleConns)
 		sqlDB.SetMaxOpenConns(m.MaxOpenConns)
+		// 设置全局钩子
+		db.Callback().Create().Before("gorm:create").Register("setup_create_time", func(tx *gorm.DB) {
+			for _, field := range tx.Statement.Schema.Fields {
+				if field.DBName == "create_time" {
+					tx.Statement.SetColumn(field.DBName, time.Now())
+				}
+				if field.DBName == "update_time" {
+					tx.Statement.SetColumn(field.DBName, time.Now())
+				}
+			}
+		})
+		//
+		db.Callback().Update().Before("gorm:update").Register("setup_update_time", func(tx *gorm.DB) {
+			for _, field := range tx.Statement.Schema.Fields {
+				if field.DBName == "update_time" {
+					tx.Statement.SetColumn(field.DBName, time.Now())
+					break
+				}
+			}
+		})
 		return db
 	}
 }

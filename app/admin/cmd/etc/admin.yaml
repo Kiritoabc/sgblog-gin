@@ -10,11 +10,16 @@ zap:
   stacktrace-key: stacktrace
   log-in-console: true
 
-
+# jwt configuration
+jwt:
+  signing-key: kirito
+  expires-time: 7d
+  buffer-time: 1d
+  issuer: kirito
 
 # redis configuration
 redis:
-  db: 0
+  db: 1
   addr: 127.0.0.1:6379
   password: ""
 
@@ -22,10 +27,10 @@ redis:
 # system configuration
 system:
   env: public # Change to "develop" to skip authentication for development mode
-  addr: 8989
+  addr: 8988
   db-type: mysql
   oss-type: local # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
-  use-redis: false # 使用redis
+  use-redis: true # 使用redis
   use-multipoint: false
   # IP限制次数 一个小时15000次
   iplimit-count: 15000
@@ -47,6 +52,6 @@ mysql:
   max-idle-conns: 10
   max-open-conns: 100
   log-mode: ""
-  log-zap: false
+  log-zap: true
 
 
