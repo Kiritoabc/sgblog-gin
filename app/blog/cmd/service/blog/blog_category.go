@@ -46,6 +46,7 @@ func getCategoryIdsSet(articleList []*blog.SgArticle) []int64 {
 	}
 	return categoryIds
 }
+
 func extractCategoryIds(articleList []*blog.SgArticle) map[int64]struct{} {
 	categoryIds := make(map[int64]struct{})
 	var mutex sync.Mutex // 如果需要并发安全，可以添加互斥锁

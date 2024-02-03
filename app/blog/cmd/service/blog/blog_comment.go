@@ -24,11 +24,12 @@ func (s *CommentService) CommentList(commentType string,
 	// 3.根评论 rootId 为-1
 	// 4.评论类型
 	// 5. 分页查询
+	tx.Where("root_id = ? and type = ?", -1, commentType).Count(&total)
+
 	err := tx.Where("root_id = ? and type = ?", -1, commentType).
 		Order("create_time asc").
 		Limit(pageSize).
 		Offset((pageNum - 1) * pageSize).
-		Count(&total).
 		Find(&comments).Error
 	if err != nil {
 		return nil, 0, err

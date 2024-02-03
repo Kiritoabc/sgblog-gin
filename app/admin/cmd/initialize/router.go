@@ -23,7 +23,8 @@ func Routers() *gin.Engine {
 		PublicGroup.GET("/health", func(c *gin.Context) {
 			c.JSON(http.StatusOK, "ok")
 		})
-		adminRouter.InitLoginROuter(PublicGroup)
+		adminRouter.InitLoginRouter(PublicGroup)
+		adminRouter.InitArticleRouter(PublicGroup)
 	}
 	PrivateGroup := Router.Group(global.SG_BLOG_COFIG.System.RouterPrefix)
 	{
@@ -31,6 +32,7 @@ func Routers() *gin.Engine {
 			c.JSON(http.StatusOK, "hello world")
 		})
 		adminRouter.InitLoginPrivateRouter(PrivateGroup)
+		adminRouter.InitArticlePrivateRouter(PrivateGroup)
 	}
 	global.SG_BLOG_LOG.Info("router register success")
 	return Router

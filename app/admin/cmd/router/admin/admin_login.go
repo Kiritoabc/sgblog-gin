@@ -9,7 +9,7 @@ import (
 type LoginRouter struct {
 }
 
-func (s LoginRouter) InitLoginROuter(Router *gin.RouterGroup) {
+func (s *LoginRouter) InitLoginRouter(Router *gin.RouterGroup) {
 
 	loginApi := v1.ApiGroupApp.BlogApiGroup.AdminLoginApi
 	{
@@ -18,11 +18,12 @@ func (s LoginRouter) InitLoginROuter(Router *gin.RouterGroup) {
 	}
 }
 
-func (s LoginRouter) InitLoginPrivateRouter(Router *gin.RouterGroup) {
+func (s *LoginRouter) InitLoginPrivateRouter(Router *gin.RouterGroup) {
 	loginApi := v1.ApiGroupApp.BlogApiGroup.AdminLoginApi
 	Router.Use(middleware.JwtAuth())
 	{
-		Router.POST("/user/logout", loginApi.Logout) // 管理员退出
-		Router.GET("/getInfo", loginApi.GetInfo)     // 获取信息
+		Router.POST("/user/logout", loginApi.Logout)   // 管理员退出
+		Router.GET("/getInfo", loginApi.GetInfo)       // 获取信息
+		Router.GET("/getRouters", loginApi.GetRouters) // 获取路由
 	}
 }

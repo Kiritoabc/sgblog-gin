@@ -24,6 +24,7 @@ type SysMenu struct {
 	UpdateTime time.Time             `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	Remark     string                `gorm:"column:remark;type:VARCHAR(500);" json:"remark"`
 	DelFlag    soft_delete.DeletedAt `gorm:"column:del_flag;type:INT(1);softDelete:flag" json:"delFlag"`
+	Children   []*SysMenu            `gorm:"-" json:"children"`
 }
 
 func (SysMenu) TableName() string {

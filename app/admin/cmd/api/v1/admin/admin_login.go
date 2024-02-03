@@ -85,6 +85,17 @@ func (s *AdminLoginApi) GetRouters(ctx *gin.Context) {
 		response.FailWithMessage("用户未登录", ctx)
 		return
 	}
+	loginUser, e := ctx.Get("loginUser")
+	if !e {
+		response.FailWithMessage("用户未登录", ctx)
+		return
+	}
+	var isAdmin = loginUser.(*blog.UserLogin).User.Type == "1"
 	// 查询menu 结果是tree的形式
-	_ = userId
+	treeMenu, err := menuService.SelectRouterMenuTreeByUserId(userId.(int64), isAdmin)
+	if err != nil {
+		response.FailWithMessage(err.Error(), ctx)
+		return
+	}
+	response.OkWithDetailed(treeMenu, "获取成功", ctx)
 }

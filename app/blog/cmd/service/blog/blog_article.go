@@ -45,8 +45,9 @@ func (s *ArticleService) ArticleList(pageNum int, pageSize int,
 	}
 	var articles []*blog.SgArticle
 	var count int64
+	// 查询数量
+	articleDB.Where("status = ?", constants.ArticleStatusNormal).Count(&count)
 	err := articleDB.Where("status = ?", constants.ArticleStatusNormal).
-		Count(&count).
 		Order("is_top desc").
 		Limit(pageSize).
 		Offset((pageNum - 1) * pageSize).

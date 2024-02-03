@@ -35,7 +35,7 @@ func JwtAuth() gin.HandlerFunc {
 			return
 		}
 		//c.Set("claims", claims)
-		key := fmt.Sprintf("bloglogin:%d", claims.BaseClaims.ID)
+		key := fmt.Sprintf("login:%d", claims.BaseClaims.ID)
 		jsonResult, err := global.SG_BLOG_REDIS.Get(context.Background(), key).Result()
 		if err != nil {
 			response.FailWithMessage("未登录或非法访问", c)
