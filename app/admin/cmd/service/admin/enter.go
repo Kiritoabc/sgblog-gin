@@ -9,4 +9,5 @@ type ServiceGroup struct {
 	LinkService
 	MenuService
 	RoleService
+	TagService
 }

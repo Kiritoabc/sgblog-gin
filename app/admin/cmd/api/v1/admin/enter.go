@@ -7,6 +7,9 @@ import (
 type ApiGroup struct {
 	AdminLoginApi
 	AdminArticleApi
+	AdminCategoryApi
+	AdminLinkApi
+	AdminTagApi
 }
 
 var (
@@ -16,6 +19,7 @@ var (
 	blogUserService     = service.ServiceGroupApp.BlogServiceGroup.UserService
 	blogCommentService  = service.ServiceGroupApp.BlogServiceGroup.CommentService
 	blogLinkService     = service.ServiceGroupApp.BlogServiceGroup.LinkService
+	blogTagService      = service.ServiceGroupApp.BlogServiceGroup.TagService
 	menuService         = service.ServiceGroupApp.BlogServiceGroup.MenuService
 	roleService         = service.ServiceGroupApp.BlogServiceGroup.RoleService
 )

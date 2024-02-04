@@ -46,6 +46,7 @@ func getCategoryIdsSet(articleList []*blog.SgArticle) []int64 {
 	}
 	return categoryIds
 }
+
 func extractCategoryIds(articleList []*blog.SgArticle) map[int64]struct{} {
 	categoryIds := make(map[int64]struct{})
 	var mutex sync.Mutex // 如果需要并发安全，可以添加互斥锁
@@ -56,4 +57,49 @@ func extractCategoryIds(articleList []*blog.SgArticle) map[int64]struct{} {
 	}
 
 	return categoryIds
+}
+
+func (s *CategoryService) ListAllCategory() ([]*vo.CategoryVo, error) {
+	db := global.SG_BLOG_DB
+	var categories []*blog.SgCategory
+
+	err := db.Model(&blog.SgCategory{}).
+		Where("status = ?", constants.Normal).
+		Find(&categories).Error
+	if err != nil {
+		return nil, err
+	}
+	var categoryVoList []*vo.CategoryVo
+	err = copier.Copy(&categoryVoList, &categories)
+	if err != nil {
+		return nil, err
+	}
+	return categoryVoList, nil
+}
+
+func (s *CategoryService) SelectCategoryPage(category blog.SgCategory,
+	pageNum int, pageSize int) ([]*blog.SgCategory, int64, error) {
+	var categories []*blog.SgCategory
+
+	query := global.SG_BLOG_DB.Model(&blog.SgCategory{})
+
+	// build query
+	if category.Name != "" {
+		query = query.Where("name LIKE ?", "%"+category.Name+"%")
+	}
+	if category.Status == "" {
+		query = query.Where("status = ?", category.Status)
+	}
+
+	// page query
+	offset := (pageNum - 1) * pageSize
+	limit := pageSize
+	var total int64
+	if err := query.Count(&total).Offset(offset).
+		Limit(limit).Find(&categories).Error; err != nil {
+		return nil, 0, err
+	}
+
+	// return results
+	return categories, total, nil
 }
