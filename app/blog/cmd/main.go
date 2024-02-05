@@ -1,10 +1,11 @@
 package main
 
 import (
-	"go.uber.org/zap"
 	"sgblog-go/app/blog/cmd/core"
 	"sgblog-go/app/blog/cmd/global"
 	"sgblog-go/app/blog/cmd/initialize"
+
+	"go.uber.org/zap"
 )
 
 var configFile = "app/admin/cmd/etc/admin.yaml"

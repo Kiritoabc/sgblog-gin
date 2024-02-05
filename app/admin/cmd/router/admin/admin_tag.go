@@ -24,5 +24,11 @@ func (s TagRouter) InitTagPrivateRouter(Router *gin.RouterGroup) {
 	{
 		_ = tagRouter
 		_ = tagApi
+		tagRouter.GET("/list", tagApi.List)
+		tagRouter.POST("", tagApi.Add)          // create a link record
+		tagRouter.DELETE("/:id", tagApi.Delete) // remove a record by id
+		tagRouter.PUT("", tagApi.Edit)
+		tagRouter.GET("/:id", tagApi.GetInfo)
+		tagRouter.GET("/listAllTag", tagApi.ListAllTag)
 	}
 }
