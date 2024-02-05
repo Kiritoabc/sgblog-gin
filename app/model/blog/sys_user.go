@@ -21,6 +21,7 @@ type SysUser struct {
 	UpdateBy    int64                 `gorm:"column:update_by;type:BIGINT(20);" json:"updateBy"`
 	UpdateTime  time.Time             `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	DelFlag     soft_delete.DeletedAt `gorm:"column:del_flag;type:INT(1);softDelete:flag" json:"delFlag"`
+	RoleIds     []int64               `gorm:"-" json:"roleIds"`
 }
 
 func (SysUser) TableName() string {

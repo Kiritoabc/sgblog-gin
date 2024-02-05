@@ -27,6 +27,8 @@ func Routers() *gin.Engine {
 		adminRouter.InitArticleRouter(PublicGroup)
 		adminRouter.InitCategoryRouter(PublicGroup)
 		adminRouter.InitLinkRouter(PublicGroup)
+		adminRouter.InitTagRouter(PublicGroup)
+		adminRouter.InitUserRouter(PublicGroup)
 	}
 	PrivateGroup := Router.Group(global.SG_BLOG_COFIG.System.RouterPrefix)
 	{
@@ -37,6 +39,8 @@ func Routers() *gin.Engine {
 		adminRouter.InitArticlePrivateRouter(PrivateGroup)
 		adminRouter.InitCategoryPrivateRouter(PrivateGroup)
 		adminRouter.InitLinkPrivateRouter(PrivateGroup)
+		adminRouter.InitTagPrivateRouter(PrivateGroup)
+		adminRouter.InitUserPrivateRouter(PrivateGroup)
 	}
 	global.SG_BLOG_LOG.Info("router register success")
 	return Router

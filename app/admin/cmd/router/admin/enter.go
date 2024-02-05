@@ -5,4 +5,6 @@ type RouterGroup struct {
 	ArticleRouter
 	CategoryRouter
 	LinkRouter
+	TagRouter
+	UserRouter
 }

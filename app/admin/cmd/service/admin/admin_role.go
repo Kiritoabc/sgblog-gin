@@ -3,6 +3,7 @@ package admin
 import (
 	"sgblog-go/app/admin/cmd/global"
 	"sgblog-go/app/model/blog"
+	"sgblog-go/common/constants"
 )
 
 type RoleService struct{}
@@ -22,4 +23,30 @@ func (s *RoleService) SelectRoleKeyByUserId(userId int64) ([]string, error) {
 		return nil, err
 	}
 	return roleKeys, nil
+}
+
+func (s *RoleService) SelectRoleAll() ([]*blog.SysRole, error) {
+	var roleList []*blog.SysRole
+	err := global.SG_BLOG_DB.Model(&blog.SysRole{}).Where("status = ?", constants.Normal).
+		Find(&roleList).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return roleList, nil
+}
+
+func (s *RoleService) SelectRoleIdByUserId(userId int64) ([]int64, error) {
+	var ids []int64
+
+	err := global.SG_BLOG_DB.Table("sys_role r").
+		Joins("left join sys_user_role ur on ur.role_id = u.id").
+		Where("ur.user_id = ?", userId).Pluck("r.id", &ids).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return ids, nil
 }
