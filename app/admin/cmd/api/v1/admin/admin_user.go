@@ -115,16 +115,34 @@ func (s *AdminUserApi) Edit(ctx *gin.Context) {
  */
 
 func (s *AdminUserApi) Remove(ctx *gin.Context) {
+	userId, exists := ctx.Get("userId")
+	if !exists {
+		response.FailWithMessage("用户不存在", ctx)
+		return
+	}
+
 	ids := ctx.Param("userIds")
 	spiltStr := strings.Split(ids, ",")
 	userIdsSlice := make([]int, len(spiltStr))
 
 	for i, s := range spiltStr {
+		if userId == s {
+			response.FailWithMessage("不能删除自身", ctx)
+			return
+		}
 		id, err := strconv.Atoi(s)
 		if err != nil {
 			panic(err)
 		}
 		userIdsSlice[i] = id
 	}
-	_ = ids
+
+	err := global.SG_BLOG_DB.Model(&blog.SysUser{}).Delete(&blog.SysUser{}, userIdsSlice).Error
+
+	if err != nil {
+		response.FailWithMessage(err.Error(), ctx)
+		return
+	}
+
+	response.OkWithMessage("删除成功", ctx)
 }

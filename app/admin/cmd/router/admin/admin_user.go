@@ -25,6 +25,9 @@ func (s UserRouter) InitUserPrivateRouter(Router *gin.RouterGroup) {
 		_ = userRouter
 		_ = userApi
 		userRouter.GET("/list", userApi.List)
+		userRouter.POST("", userApi.Add)
+		userRouter.GET("/:userId", userApi.GetUserInfoAndRoleIds)
+		userRouter.POST("", userApi.Edit)
 		userRouter.DELETE("/:userIds", userApi.Remove)
 	}
 }
