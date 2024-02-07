@@ -7,4 +7,5 @@ type RouterGroup struct {
 	LinkRouter
 	TagRouter
 	UserRouter
+	MenuRouter
 }

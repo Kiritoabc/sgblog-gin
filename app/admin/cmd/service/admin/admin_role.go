@@ -50,3 +50,26 @@ func (s *RoleService) SelectRoleIdByUserId(userId int64) ([]int64, error) {
 
 	return ids, nil
 }
+
+func (s *RoleService) UpdateRole(role blog.SysRole) error {
+	tx := global.SG_BLOG_DB.Begin()
+
+	if err := tx.Model(&blog.SysRole{}).Where("id = ?", role.Id).Updates(&role).Error; err != nil {
+		if tx.Rollback().Error != nil {
+			return err
+		}
+		return err
+	}
+	if err := tx.Where("role_id = ?", role.Id).Delete(&blog.SysRoleMenu{}).Error; err != nil {
+		if tx.Rollback().Error != nil {
+			return err
+		}
+		return err
+	}
+
+	if err := tx.Commit().Error; err != nil {
+		return err
+	}
+
+	return nil
+}

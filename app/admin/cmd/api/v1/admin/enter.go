@@ -11,6 +11,7 @@ type ApiGroup struct {
 	AdminLinkApi
 	AdminTagApi
 	AdminUserApi
+	AdminMenuApi
 }
 
 var (

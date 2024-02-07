@@ -117,3 +117,41 @@ func getChildren(menu *blog.SysMenu, menus []*blog.SysMenu) ([]*blog.SysMenu, er
 	}
 	return children, nil
 }
+
+func (s *MenuService) SelectMenuList(menu blog.SysMenu) ([]*blog.SysMenu, error) {
+	var menus []*blog.SysMenu
+
+	query := global.SG_BLOG_DB.Model(&blog.SysMenu{})
+
+	err := query.Where("menu_name like ?", "%"+menu.MenuName+"%").
+		Where("status", menu.Status).Order("parent_id asc").
+		Find(&menus).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return menus, nil
+}
+
+func (s *MenuService) SelectMenuListByRoleId(roleId int64) ([]int64, error) {
+	var menuIds []int64
+
+	query := global.SG_BLOG_DB
+
+	err := query.Table("sys_menu m").Joins("LEFT JOIN sys_role_menu rm ON m.id = rm.menu_id").
+		Where("rm.role_id = ?", roleId).Order("m.parent_id , m.order_num asc").
+		Find(&menuIds).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return menuIds, nil
+}
+
+func (s *MenuService) HasChild(menuId string) bool {
+	var count int64
+	global.SG_BLOG_DB.Model(&blog.SysMenu{}).Where("parent_id = ?", menuId).Count(&count)
+	return count != 0
+}
