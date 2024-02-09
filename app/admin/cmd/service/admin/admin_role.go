@@ -73,3 +73,61 @@ func (s *RoleService) UpdateRole(role blog.SysRole) error {
 
 	return nil
 }
+
+func (s *RoleService) InsertRole(role blog.SysRole) error {
+	tx := global.SG_BLOG_DB.Begin()
+
+	// Create a record
+	if err := tx.Create(&role).Error; err != nil {
+		if tx.Rollback().Error != nil {
+			return err
+		}
+		return err
+	}
+
+	// insert Role Menu
+	if role.MenuIds != nil && len(role.MenuIds) > 0 {
+		var roleMenuList = make([]*blog.SysRoleMenu, 0)
+		for _, menuId := range role.MenuIds {
+			roleMenu := &blog.SysRoleMenu{RoleId: role.Id, MenuId: menuId}
+			roleMenuList = append(roleMenuList, roleMenu)
+		}
+		if err := tx.Create(roleMenuList).Error; err != nil {
+			if tx.Rollback().Error != nil {
+				return err
+			}
+			return err
+		}
+	}
+	// commit
+	if err := tx.Commit().Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *RoleService) List(role blog.SysRole, num int, size int) ([]blog.SysRole, int64, error) {
+	var list []blog.SysRole
+
+	query := global.SG_BLOG_DB.Model(&blog.SysRole{})
+	if role.RoleName != "" {
+		query = query.Where("role_name like ?", "%"+role.RoleName+"%")
+	}
+	if role.Status != "" {
+		query = query.Where("status = ?", role.Status)
+	}
+	var total int64
+
+	offset := (num - 1) * size
+	limit := size
+
+	if err := query.Count(&total).
+		Order("role_sort asc").
+		Offset(offset).
+		Limit(limit).
+		Find(&list).Error; err != nil {
+		return nil, 0, err
+	}
+
+	return list, total, nil
+}

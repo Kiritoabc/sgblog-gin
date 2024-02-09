@@ -14,6 +14,7 @@ type SysRole struct {
 	UpdateBy   int64     `gorm:"column:update_by;type:BIGINT(20);" json:"updateBy"`
 	UpdateTime time.Time `gorm:"column:update_time;type:DATETIME;default:current_timestamp on update current_timestamp" json:"updateTime"`
 	Remark     string    `gorm:"column:remark;type:VARCHAR(500);" json:"remark"`
+	MenuIds    []int64   `gorm:"-" json:"menuIds"`
 }
 
 func (SysRole) TableName() string {

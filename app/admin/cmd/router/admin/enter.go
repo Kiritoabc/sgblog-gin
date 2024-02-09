@@ -8,4 +8,5 @@ type RouterGroup struct {
 	TagRouter
 	UserRouter
 	MenuRouter
+	RoleRouter
 }

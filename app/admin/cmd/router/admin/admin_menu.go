@@ -9,7 +9,7 @@ import (
 type MenuRouter struct {
 }
 
-func (s MenuRouter) InitMenuRouter(Router *gin.RouterGroup) {
+func (s *MenuRouter) InitMenuRouter(Router *gin.RouterGroup) {
 	menuRouter := Router.Group("/system/menu")
 	menuApi := v1.ApiGroupApp.BlogApiGroup.AdminMenuApi
 	{
@@ -18,7 +18,7 @@ func (s MenuRouter) InitMenuRouter(Router *gin.RouterGroup) {
 	}
 }
 
-func (s MenuRouter) InitMenuPrivateRouter(Router *gin.RouterGroup) {
+func (s *MenuRouter) InitMenuPrivateRouter(Router *gin.RouterGroup) {
 	menuRouter := Router.Group("/system/menu").Use(middleware.JwtAuth())
 	menuApi := v1.ApiGroupApp.BlogApiGroup.AdminMenuApi
 	{

@@ -9,7 +9,7 @@ import (
 type UserRouter struct {
 }
 
-func (s UserRouter) InitUserRouter(Router *gin.RouterGroup) {
+func (s *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
 	userRouter := Router.Group("/system/user")
 	userApi := v1.ApiGroupApp.BlogApiGroup.AdminUserApi
 	{
@@ -18,7 +18,7 @@ func (s UserRouter) InitUserRouter(Router *gin.RouterGroup) {
 	}
 }
 
-func (s UserRouter) InitUserPrivateRouter(Router *gin.RouterGroup) {
+func (s *UserRouter) InitUserPrivateRouter(Router *gin.RouterGroup) {
 	userRouter := Router.Group("/system/user").Use(middleware.JwtAuth())
 	userApi := v1.ApiGroupApp.BlogApiGroup.AdminUserApi
 	{

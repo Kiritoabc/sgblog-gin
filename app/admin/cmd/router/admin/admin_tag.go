@@ -9,7 +9,7 @@ import (
 type TagRouter struct {
 }
 
-func (s TagRouter) InitTagRouter(Router *gin.RouterGroup) {
+func (s *TagRouter) InitTagRouter(Router *gin.RouterGroup) {
 	tagRouter := Router.Group("tag")
 	tagApi := v1.ApiGroupApp.BlogApiGroup.AdminTagApi
 	{
@@ -18,7 +18,7 @@ func (s TagRouter) InitTagRouter(Router *gin.RouterGroup) {
 	}
 }
 
-func (s TagRouter) InitTagPrivateRouter(Router *gin.RouterGroup) {
+func (s *TagRouter) InitTagPrivateRouter(Router *gin.RouterGroup) {
 	tagRouter := Router.Group("/content/tag").Use(middleware.JwtAuth())
 	tagApi := v1.ApiGroupApp.BlogApiGroup.AdminTagApi
 	{
