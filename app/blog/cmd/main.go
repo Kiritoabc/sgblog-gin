@@ -11,7 +11,7 @@ import (
 var configFile = "app/admin/cmd/etc/admin.yaml"
 
 func main() {
-	global.SG_BLOG_VP = core.Viper(configFile) // 初始化Viper
+	global.SG_BLOG_VP = core.Viper("") // 初始化Viper
 	global.SG_BLOG_LOG = core.Zap()
 	zap.ReplaceGlobals(global.SG_BLOG_LOG)
 	global.SG_BLOG_DB = initialize.Gorm() // gorm连接数据库
